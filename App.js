@@ -1,11 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from "react";
+import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View, Modal, Button } from "react-native";
+const logoImg = require("./assets/adaptive-icon.png");
 
 export default function App() {
+  const [openModal,setOpenModal] = useState(false);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={[styles.container]}>
+       <Button onPress={()=>setOpenModal(true)} style={{padding:"20px"}} title="open modal"/>
+     <Modal visible={openModal} onRequestClose={()=>setOpenModal(false)} animationType="fade" presentationStyle="pageSheet">
+        <View style={{backgroundColor:"plum"}}>
+          <Text>
+    Hello this is modal content
+          </Text>
+          <Button onPress={()=>setOpenModal(false)} title="close modal"/>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -13,8 +22,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+  }
 });
