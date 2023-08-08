@@ -2,14 +2,18 @@ import { StyleSheet, Text, View } from "react-native";
 
 /*/last property will take advantage of style in the styling array}*/
 
-// BOX - model
+// BOX - Shadow
+
+// box shadow like box shadow object can only be applicable for ios devices not on android
+// to do box shadow on android devices we need to use android elevate api
+
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={[styles.lightblue, styles.box]}>
-        <Text style={{borderRadius:5,backgroundColor:'red'}}>Lightblue box</Text>
+      <View style={[styles.lightblue, styles.box, styles.boxshadow, styles.androidElevate]}>
+        <Text style={{ borderRadius: 5, backgroundColor: "red" }}>Lightblue box</Text>
       </View>
-      <View style={[styles.box, styles.lightgreen]}>
+      <View style={[styles.box, styles.lightgreen, styles.boxshadow, styles.androidElevate]}>
         <Text>Lightgreen box</Text>
       </View>
     </View>
@@ -23,8 +27,8 @@ const styles = StyleSheet.create({
     padding: 60,
   },
   box: {
-    width: 100,
-    height: 100,
+    width: 250,
+    height: 250,
     //padding and margin
     paddingHorizontal: 10,
     paddingVertical: 20,
@@ -34,12 +38,25 @@ const styles = StyleSheet.create({
     borderColor: "purple",
     backgroundColor: "pink",
     //borderRadius - only applies to android when applied on Textcomponent , however View component supports in both platforms
-    borderRadius:5
+    borderRadius: 5,
   },
   lightblue: {
     backgroundColor: "lightblue",
   },
   lightgreen: {
     backgroundColor: "lightgreen",
+  },
+  boxshadow: {
+    shadowColor: "#333333",
+    shadowOffset: {
+      width: 6,
+      height: 6,
+    },
+    shadowOpacity: 0.6,
+    borderRadius: 4,
+  },
+  androidElevate: {
+    elevation: 10,
+    shadowColor: "red",
   },
 });
