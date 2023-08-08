@@ -1,26 +1,11 @@
-import { useState } from "react";
-import { StyleSheet, View } from "react-native";
-import Greet from "./components/Greet";
-const logoImg = require("./assets/adaptive-icon.png");
+import { Text, View } from "react-native";
 
-//Reusable components
+//Styling in React -- css not allowed can be styled with the help of javascript properties like camelCase propeties e.g. backgroundColor instead backgroud-color
 
 export default function App() {
-  const [openModal, setOpenModal] = useState(false);
   return (
-    <View style={[styles.container]}>
-     <Greet name="Bruce Wayne"/>
-     <Greet name="Michael Jordan"/>
+    <View style={{flex:1, backgroundColor:'plum', padding:60 }}>
+   <Text>StyleSheet API</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 10,
-  },
-});
