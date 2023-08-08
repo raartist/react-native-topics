@@ -1,20 +1,21 @@
-import { useState } from "react";
-import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View, Modal, Button } from "react-native";
-const logoImg = require("./assets/adaptive-icon.png");
+import { StyleSheet, Text, View } from "react-native";
+
+/*/last property will take advantage of style in the styling array}*/
+
+// BOX - Shadow
+
+// box shadow like box shadow object can only be applicable for ios devices not on android
+// to do box shadow on android devices we need to use android elevate api
 
 export default function App() {
-  const [openModal,setOpenModal] = useState(false);
   return (
-    <View style={[styles.container]}>
-       <Button onPress={()=>setOpenModal(true)} style={{padding:"20px"}} title="open modal"/>
-     <Modal visible={openModal} onRequestClose={()=>setOpenModal(false)} animationType="fade" presentationStyle="pageSheet">
-        <View style={{backgroundColor:"plum"}}>
-          <Text>
-    Hello this is modal content
-          </Text>
-          <Button onPress={()=>setOpenModal(false)} title="close modal"/>
-        </View>
-      </Modal>
+    <View style={styles.container}>
+      <View style={[styles.lightblue, styles.box, styles.boxshadow, styles.androidElevate]}>
+        <Text style={{ borderRadius: 5, backgroundColor: "red" }}>Lightblue box</Text>
+      </View>
+      <View style={[styles.box, styles.lightgreen, styles.boxshadow, styles.androidElevate]}>
+        <Text>Lightgreen box</Text>
+      </View>
     </View>
   );
 }
@@ -22,9 +23,40 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 10,
-  }
+    backgroundColor: "plum",
+    padding: 60,
+  },
+  box: {
+    width: 250,
+    height: 250,
+    //padding and margin
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+    marginVertical: 10,
+    //border
+    borderWidth: 2,
+    borderColor: "purple",
+    backgroundColor: "pink",
+    //borderRadius - only applies to android when applied on Textcomponent , however View component supports in both platforms
+    borderRadius: 5,
+  },
+  lightblue: {
+    backgroundColor: "lightblue",
+  },
+  lightgreen: {
+    backgroundColor: "lightgreen",
+  },
+  boxshadow: {
+    shadowColor: "#333333",
+    shadowOffset: {
+      width: 6,
+      height: 6,
+    },
+    shadowOpacity: 0.6,
+    borderRadius: 4,
+  },
+  androidElevate: {
+    elevation: 10,
+    shadowColor: "red",
+  },
 });
