@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 /*/last property will take advantage of style in the styling array}*/
 
-// BOX - Shadow
+// Style - Inheritance
 
 // box shadow like box shadow object can only be applicable for ios devices not on android
 // to do box shadow on android devices we need to use android elevate api
@@ -10,6 +10,11 @@ import { StyleSheet, Text, View } from "react-native";
 export default function App() {
   return (
     <View style={styles.container}>
+      <View style={styles.darkMode}>
+        <Text style={styles.darkModeText}>
+          Inheritance Text <Text style={styles.boldText}> Next text</Text>
+        </Text>
+      </View>
       <View style={[styles.lightblue, styles.box, styles.boxshadow, styles.androidElevate]}>
         <Text style={{ borderRadius: 5, backgroundColor: "red" }}>Lightblue box</Text>
       </View>
@@ -59,4 +64,14 @@ const styles = StyleSheet.create({
     elevation: 10,
     shadowColor: "red",
   },
+  darkMode:{
+    backgroundColor:"black",
+    color:"white",  //this color is not inherited in the children of view which is text
+  },
+  darkModeText:{
+    color:"white"
+  },
+  boldText:{
+    fontWeight:"bold"
+  }
 });
