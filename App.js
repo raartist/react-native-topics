@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import Box from "./components/Box";
 
 /*/last property will take advantage of style in the styling array}*/
 
-// BOX - Shadow
+// 27 - Flex-Direction
 
 // box shadow like box shadow object can only be applicable for ios devices not on android
 // to do box shadow on android devices we need to use android elevate api
@@ -10,53 +11,23 @@ import { StyleSheet, Text, View } from "react-native";
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={[styles.lightblue, styles.box, styles.boxshadow, styles.androidElevate]}>
-        <Text style={{ borderRadius: 5, backgroundColor: "red" }}>Lightblue box</Text>
-      </View>
-      <View style={[styles.box, styles.lightgreen, styles.boxshadow, styles.androidElevate]}>
-        <Text>Lightgreen box</Text>
-      </View>
+      <Box style={{ backgroundColor: "#8e9b00" }}>Box 1</Box>
+      <Box style={{ backgroundColor: "#b65d1f" }}>Box 2</Box>
+      <Box style={{ backgroundColor: "#1c4c56" }}>Box 3</Box>
+      <Box style={{ backgroundColor: "#ab9156" }}>Box 4</Box>
+      <Box style={{ backgroundColor: "#6b0803" }}>Box 5</Box>
+      <Box style={{ backgroundColor: "#1c4c56" }}>Box 6</Box>
+      <Box style={{ backgroundColor: "#8e9b00" }}>Box 7</Box>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 64,
+    borderWidth: 6,
+    borderColor: "pink",
     flex: 1,
-    backgroundColor: "plum",
-    padding: 60,
-  },
-  box: {
-    width: 250,
-    height: 250,
-    //padding and margin
-    paddingHorizontal: 10,
-    paddingVertical: 20,
-    marginVertical: 10,
-    //border
-    borderWidth: 2,
-    borderColor: "purple",
-    backgroundColor: "pink",
-    //borderRadius - only applies to android when applied on Textcomponent , however View component supports in both platforms
-    borderRadius: 5,
-  },
-  lightblue: {
-    backgroundColor: "lightblue",
-  },
-  lightgreen: {
-    backgroundColor: "lightgreen",
-  },
-  boxshadow: {
-    shadowColor: "#333333",
-    shadowOffset: {
-      width: 6,
-      height: 6,
-    },
-    shadowOpacity: 0.6,
-    borderRadius: 4,
-  },
-  androidElevate: {
-    elevation: 10,
-    shadowColor: "red",
+    flexDirection: "column",
   },
 });
