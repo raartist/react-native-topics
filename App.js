@@ -3,7 +3,7 @@ import Box from "./components/Box";
 
 /*/last property will take advantage of style in the styling array}*/
 
-// 27 - Flex-Direction
+// 27 - Flex-justifyContent
 
 // box shadow like box shadow object can only be applicable for ios devices not on android
 // to do box shadow on android devices we need to use android elevate api
@@ -29,5 +29,6 @@ const styles = StyleSheet.create({
     borderColor: "pink",
     flex: 1,
     flexDirection: "column",
+    justifyContent:"space-evenly"
   },
 });
