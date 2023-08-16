@@ -11,10 +11,10 @@ export default function Box({ children, style }) {
 const styles = StyleSheet.create({
   box: {
     backgroundColor: "#fff",
-    padding: 20,
+    padding: 12,
   },
   text: {
-    fontSize: 24,
+    fontSize: 14,
     fontWeight: "bold",
     textAlign: "center",
   },

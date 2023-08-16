@@ -3,7 +3,7 @@ import Box from "./components/Box";
 
 /*/last property will take advantage of style in the styling array}*/
 
-// 33 - Flex-alignContent
+// 34 - Flex-Gap
 
 // box shadow like box shadow object can only be applicable for ios devices not on android
 // to do box shadow on android devices we need to use android elevate api
@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
 
     alignContent: "space-between",
+    columnGap:20,
+    rowGap:12,
+    gap:23
   },
   box: {
     width: 100,
