@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+
+import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 
 /*/last property will take advantage of style in the styling array}*/
 
-// 40 - Drawbacks of Dimensions API
-// it will failed to meet our dimension conditions when screen is rotated | thus we need to reload our app to recalculate the dimensions.
-// for resolving this issue we are using useState and useEffect hooks.
+// 42 - useWindowDimensions
 
+// (Dimensions API drawbacks) it will failed to meet our dimension conditions when screen is rotated | thus we need to reload our app to recalculate the dimensions.
+// for resolving this issue we are using useState and useEffect hooks.
+// although this issue can also be solved with useWindowDimensions Api from react-native.. without using any hook
 // Flex:<positive number>
 // flexGrow: '<positive number>', flexShrink:1, flexBasis:0
 
@@ -14,21 +15,8 @@ import { Dimensions, StyleSheet, Text, View } from "react-native";
 // to do box shadow on android devices we need to use android elevate api
 
 export default function App() {
-  const [dimensions, setDimensions] = useState({window:Dimensions.get("window")});
-
-  const {window} = dimensions;
-  const windowWidth = window.width;
-  const windowHeight = window.height;
-
-  useEffect(() => {
-    const subscription = Dimensions.addEventListener("change",({window})=>{
-      setDimensions({window});
-    })
-  
-    return () => {
-      subscription?.remove();
-    }
-  })
+  const windowWidth = useWindowDimensions.width;
+  const windowHeight = useWindowDimensions.height;
   
   return (
     <View style={styles.container}>
