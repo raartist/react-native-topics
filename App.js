@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, SafeAreaView, StyleSheet } from "react-native";
+import { Platform, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import PokemonCard from "./components/PokemonCard";
 
 //47 - exercise 1 - creating pokemon cards (3/6)
@@ -13,11 +13,15 @@ const App = () => {
     moves: ["Scratch", "Ember", "Growl", "Leer"],
     weeknesses: ["Water", "Rock"],
   };
-  
 
   return (
     <SafeAreaView style={styles.container}>
-      <PokemonCard {...charmanderData}/>
+      <ScrollView>
+        <PokemonCard {...charmanderData} />
+        <PokemonCard {...charmanderData} />
+        <PokemonCard {...charmanderData} />
+        <PokemonCard {...charmanderData} />
+      </ScrollView>
     </SafeAreaView>
   );
 };
