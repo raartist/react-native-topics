@@ -1,39 +1,36 @@
-import { StyleSheet, View } from "react-native";
-import Box from "./components/Box";
+import React from "react";
+import { Platform, SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import PokemonCard from "./components/PokemonCard";
 
-/*/last property will take advantage of style in the styling array}*/
+//47 - exercise 1 - creating pokemon cards (3/6)
 
-// 33 - Flex-alignContent
+const App = () => {
+  const charmanderData = {
+    name: "Charmander",
+    image: require("./assets/charmander.png"),
+    type: "Fire",
+    hp: 39,
+    moves: ["Scratch", "Ember", "Growl", "Leer"],
+    weeknesses: ["Water", "Rock"],
+  };
 
-// box shadow like box shadow object can only be applicable for ios devices not on android
-// to do box shadow on android devices we need to use android elevate api
-
-export default function App() {
   return (
-    <View style={styles.container}>
-      <Box style={[{ backgroundColor: "#8e9b00" }, styles.box]}>Box 1</Box>
-      <Box style={[{ backgroundColor: "#b65d1f" }, styles.box]}>Box 2</Box>
-      <Box style={[{ backgroundColor: "#1c4c56" }, styles.box]}>Box 3</Box>
-      <Box style={[{ backgroundColor: "#ab9156" }, styles.box]}>Box 4</Box>
-      <Box style={[{ backgroundColor: "#6b0803" }, styles.box]}>Box 5</Box>
-      <Box style={[{ backgroundColor: "#1c4c56" }, styles.box]}>Box 6</Box>
-      <Box style={[{ backgroundColor: "#8e9b00" }, styles.box]}>Box 7</Box>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <PokemonCard {...charmanderData} />
+        <PokemonCard {...charmanderData} />
+        <PokemonCard {...charmanderData} />
+        <PokemonCard {...charmanderData} />
+      </ScrollView>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 64,
-    height: 300,
-    borderWidth: 6,
-    borderColor: "pink",
-    flexWrap: "wrap",
-
-    alignContent: "space-between",
-  },
-  box: {
-    width: 100,
-    height: 50,
+    flex: 1,
+    backgroundColor: "#f5f5f5",
+    marginTop: Platform.OS === "android" ? 30 : 0,
   },
 });
+export default App;
