@@ -1,13 +1,12 @@
 import React from 'react'
-import { Platform, SafeAreaView, StyleSheet, Text } from 'react-native'
+import { Platform, SafeAreaView, StyleSheet } from 'react-native'
 import PokemonCard from './components/PokemonCard'
 
-//45 - exercise 1 - creating pokemon cards
+//46 - exercise 1 - creating pokemon cards (2/6)
 
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>App</Text>
       <PokemonCard/>
     </SafeAreaView>
   )
