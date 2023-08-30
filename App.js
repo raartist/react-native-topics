@@ -3,9 +3,10 @@ import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 /*/last property will take advantage of style in the styling array}*/
 
-// 43 - SafeAreaView
-//safe area view doesn't work in all the android devices that's why we need to do some jugad with the help of platform.os tool
-// and apply padding top for android devices only.. because safeArea view works fine for ios devices
+// 44 - platform specific code
+// we already did this in last section where we added padding top for android in a different way with the help of 
+// platform package from react-native
+//because our safeAreaView was only working for ios devices.
 
 // Flex:<positive number>
 // flexGrow: '<positive number>', flexShrink:1, flexBasis:0
