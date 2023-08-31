@@ -1,9 +1,34 @@
-import React from "react";
-import { Image, Platform, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useRef } from "react";
+import { Animated, Image, Platform, StyleSheet, Text, View } from "react-native";
 
-const PokemonCard = ({ name, image, type, hp, moves, weeknesses }) => {
+const PokemonCard = ({ name, image, type, hp, moves, weaknesses }) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const getTypeDetails = (type) => {
+    switch (type.toLowerCase()) {
+      case "electric":
+        return { borderColor: "#FFD700", emoji: "⚡️" };
+      case "water":
+        return { borderColor: "#6493EA", emoji: "💧" };
+      case "fire":
+        return { borderColor: "#FF5733", emoji: "🔥" };
+      case "grass":
+        return { borderColor: "#66CC66", emoji: "🌿" };
+      default:
+        return { borderColor: "#A0A0A0", emoji: "❓" };
+    }
+  };
+  
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeAnim]);
+
+  const { borderColor, emoji } = getTypeDetails(type);
   return (
-    <View style={styles.card}>
+    <Animated.View style={[styles.card, { opacity: fadeAnim }]}>
       <View style={styles.namePar}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.hp}>❤️ HP: {hp}</Text>
@@ -17,15 +42,17 @@ const PokemonCard = ({ name, image, type, hp, moves, weeknesses }) => {
       />
 
       <View style={styles.typeContainer}>
-        <Text style={styles.type}>🔥 {type}</Text>
+        <Text style={[styles.type, { borderColor }]}>
+          {emoji} {type}
+        </Text>
       </View>
       <View style={styles.movesContainer}>
-        <Text style={styles.moves}>Moves: {moves.join(", ")}</Text>
+        <Text style={styles.moves}>Moves: {moves?.join(", ")}</Text>
       </View>
       <View style={styles.weeknessContainer}>
-        <Text style={styles.weekness}>Weekness: {weeknesses.join(", ")}</Text>
+        <Text style={styles.weekness}>Weekness: {weaknesses?.join(", ")}</Text>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 
@@ -71,27 +98,26 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
-  typeContainer:{
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center"
+  typeContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  type:{
-    borderColor:"red",
-    borderWidth:2,
-    borderRadius:10,
-    fontSize:18,
-    fontWeight:600,
-    paddingVertical:5,
-    paddingHorizontal:10
+  type: {
+    borderWidth: 2,
+    borderRadius: 10,
+    fontSize: 18,
+    fontWeight: 600,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
   },
-  moves:{
-    fontSize:18,
-    fontWeight:600,
-    paddingVertical:8
+  moves: {
+    fontSize: 18,
+    fontWeight: 600,
+    paddingVertical: 8,
   },
-  weekness:{
-    fontSize:18,
-    fontWeight:600
-  }
+  weekness: {
+    fontSize: 18,
+    fontWeight: 600,
+  },
 });
