@@ -2,7 +2,7 @@ import React from "react";
 import { Platform, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import PokemonCard from "./components/PokemonCard";
 
-//47 - exercise 1 - creating pokemon cards (3/6)
+//47 - exercise 1 - creating pokemon cards (6/6)
 
 const App = () => {
   const charmanderData = {
