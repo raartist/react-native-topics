@@ -84,11 +84,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   name: {
-    fontSize: 24,
-    fontWeight: 800,
+    fontSize: 30,
+    fontWeight: "bold",
   },
   hp: {
-    fontSize: 14,
+    fontSize: 22,
     fontWeight: 600,
   },
   image: {
@@ -112,12 +112,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   moves: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: 600,
     paddingVertical: 8,
   },
   weekness: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: 600,
   },
 });
