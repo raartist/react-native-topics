@@ -1,14 +1,15 @@
-// 53 item separator - flatList
+// 54 List empty component - flatList
 
-import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
-import pokemonList from "./data.json";
+import { Dimensions, FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
+// import pokemonList from "./data.json";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
+
       <FlatList
         style={styles.scrollView}
-        data={pokemonList}
+        data={[]}
         renderItem={function ({ item }) {
           return (
             <View style={styles.card}>
@@ -20,6 +21,7 @@ export default function App() {
         // horizontal
         keyExtractor={(item, index) => item.id.toString()}
         ItemSeparatorComponent={<View style={{ height: 16 }}></View>}
+        ListEmptyComponent={<View style={styles.emptyList}><Text>Ohh oo... No data available!</Text></View>}
       />
     </SafeAreaView>
   );
@@ -44,4 +46,10 @@ const styles = StyleSheet.create({
   cardText: {
     fontSize: 30,
   },
+  emptyList:{
+    flex:1,
+    alignItems:"center",
+    justifyContent:"center",
+    height: Dimensions.get("window").height
+  }
 });
