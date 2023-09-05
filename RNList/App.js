@@ -1,7 +1,7 @@
-// 54 List empty component - flatList
+// 55 list header and footer - flatList
 
 import { Dimensions, FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
-// import pokemonList from "./data.json";
+import pokemonList from "./data.json";
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
 
       <FlatList
         style={styles.scrollView}
-        data={[]}
+        data={pokemonList}
         renderItem={function ({ item }) {
           return (
             <View style={styles.card}>
@@ -22,6 +22,8 @@ export default function App() {
         keyExtractor={(item, index) => item.id.toString()}
         ItemSeparatorComponent={<View style={{ height: 16 }}></View>}
         ListEmptyComponent={<View style={styles.emptyList}><Text>Ohh oo... No data available!</Text></View>}
+        ListHeaderComponent={<Text style={styles.headerText}>Pokemon List</Text>}
+        ListFooterComponent={<Text style={styles.headerText}>End of list</Text>}
       />
     </SafeAreaView>
   );
@@ -51,5 +53,8 @@ const styles = StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
     height: Dimensions.get("window").height
+  },
+  headerText:{
+    fontSize:24,textAlign:"center",marginVertical:12
   }
 });
