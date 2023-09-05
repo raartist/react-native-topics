@@ -1,21 +1,26 @@
-// 51 rendering lists in react native - but not with a recommended approach
+// 52 rendering lists in react native - with recommended 'flatlist' approach
 
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
+import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
 import pokemonList from "./data.json";
 
 export default function App() {
+  
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
-        {pokemonList.map((pokemon) => {
-          return (
-            <View key={pokemon.id} style={styles.card}>
-              <Text style={styles.cardText}>{pokemon.type}</Text>
-              <Text style={styles.cardText}>{pokemon.name}</Text>
+      <FlatList
+        style={styles.scrollView}
+        data={pokemonList}
+        renderItem={function({item}){
+          return(
+            <View style={styles.card}>
+              <Text style={styles.cardText}>{item.type}</Text>
+              <Text style={styles.cardText}>{item.name}</Text>
             </View>
-          );
-        })}
-      </ScrollView>
+          )
+        }}
+        // horizontal
+        keyExtractor={(item, index)=>item.id.toString()}
+      />
     </SafeAreaView>
   );
 }
@@ -29,15 +34,15 @@ const styles = StyleSheet.create({
   scrollView: {
     paddingHorizontal: 16,
   },
-  card:{
-    padding:8,
-    borderRadius:8,
-    borderWidth:1,
-    marginBottom:16,
-    flex:1,
-    gap:4
+  card: {
+    padding: 8,
+    borderRadius: 8,
+    borderWidth: 1,
+    marginBottom: 16,
+    flex: 1,
+    gap: 4,
   },
-  cardText:{
-    fontSize:30
-  }
+  cardText: {
+    fontSize: 30,
+  },
 });
